@@ -25,7 +25,7 @@ class AirlineScheduleViewModel(private val airScheduleDao: AirScheduleDao): View
 
     fun fullSchedule(): Flow<List<AirSchedule>> = airScheduleDao.getAll()
 
-    fun scheduleForStopName(name: String): Flow<List<AirSchedule>> = airScheduleDao.getByStopName(name)
+    fun scheduleForAirlineName(name: String): Flow<List<AirSchedule>> = airScheduleDao.getByStopName(name)
 }
 
 class AirlineScheduleViewModelFactory(

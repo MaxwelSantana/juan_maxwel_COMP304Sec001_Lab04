@@ -31,5 +31,5 @@ data class AirSchedule(
     @NonNull @ColumnInfo(name = "airline_name") val airlineName: String,
     @NonNull @ColumnInfo(name = "arrival_time") val arrivalTime: Int,
     @NonNull @ColumnInfo(name = "terminal") val terminal: String,
-    @NonNull @ColumnInfo(name = "status") val status: String,
+    @NonNull @ColumnInfo(name = "status") val status: String
 )

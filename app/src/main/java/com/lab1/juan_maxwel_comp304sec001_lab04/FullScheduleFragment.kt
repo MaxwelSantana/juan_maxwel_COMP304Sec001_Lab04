@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.lab1.juan_maxwel_comp304sec001_lab04.databinding.FullScheduleFragmentBinding
 import com.lab1.juan_maxwel_comp304sec001_lab04.viewmodels.AirlineScheduleViewModel
 import com.lab1.juan_maxwel_comp304sec001_lab04.viewmodels.AirlineScheduleViewModelFactory
+
 import kotlinx.coroutines.launch
 
 class FullScheduleFragment: Fragment() {
@@ -58,17 +59,17 @@ class FullScheduleFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val airlineAdapter = AirlineAdapter({
+        val airlineAdapterAdapter = AirlineAdapter({
             val action = FullScheduleFragmentDirections
-                .actionFullScheduleFragmentToStopScheduleFragment(
-                stopName = it.airlineName
-            )
+                .actionFullScheduleFragmentToAirlineScheduleFragment(
+                    airlineName = it.airlineName
+                )
             view.findNavController().navigate(action)
         })
-        recyclerView.adapter = airlineAdapter
+        recyclerView.adapter = airlineAdapterAdapter
         lifecycle.coroutineScope.launch {
-            viewModel.fullSchedule().collect() {
-                airlineAdapter.submitList(it)
+            viewModel.fullSchedule().collect {
+                airlineAdapterAdapter.submitList(it)
             }
         }
     }

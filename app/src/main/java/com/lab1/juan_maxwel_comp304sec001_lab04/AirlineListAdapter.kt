@@ -71,6 +71,7 @@ class AirlineAdapter(
                 "h:mm a").format(Date(airSchedule.arrivalTime.toLong() * 1000)
             )
             binding.terminalTextView.text = airSchedule.terminal
+            binding.terminalTextView.text = airSchedule.status
         }
     }
 }

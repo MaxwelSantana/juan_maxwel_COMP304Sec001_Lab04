@@ -24,7 +24,7 @@ import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.coroutineScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.lab1.juan_maxwel_comp304sec001_lab04.databinding.AirlineScheduleFragmentBinding;
+import com.lab1.juan_maxwel_comp304sec001_lab04.databinding.AirlineScheduleFragmentBinding
 import com.lab1.juan_maxwel_comp304sec001_lab04.viewmodels.AirlineScheduleViewModel
 import com.lab1.juan_maxwel_comp304sec001_lab04.viewmodels.AirlineScheduleViewModelFactory
 import kotlinx.coroutines.launch
@@ -76,7 +76,7 @@ class AirlineScheduleFragment: Fragment() {
         // and tapping rows won't trigger navigation
         recyclerView.adapter = airlineAdapter
         lifecycle.coroutineScope.launch {
-            viewModel.scheduleForStopName(airlineName).collect() {
+            viewModel.scheduleForAirlineName(airlineName).collect {
                 airlineAdapter.submitList(it)
             }
         }
