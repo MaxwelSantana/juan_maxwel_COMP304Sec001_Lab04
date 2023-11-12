@@ -22,13 +22,13 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.lab1.juan_maxwel_comp304sec001_lab04.database.schedule.AirSchedule
-import com.lab1.juan_maxwel_comp304sec001_lab04.databinding.AirlineItemBinding
+import com.lab1.juan_maxwel_comp304sec001_lab04.databinding.AirlineDetailsItemBinding
 import java.text.SimpleDateFormat
 import java.util.Date
 
-class AirlineAdapter(
+class AirlineDetailsAdapter(
     private val onItemClicked: (AirSchedule) -> Unit
-) : ListAdapter<AirSchedule, AirlineAdapter.AirlineViewHolder>(DiffCallback) {
+) : ListAdapter<AirSchedule, AirlineDetailsAdapter.AirlineDetailsViewHolder>(DiffCallback) {
 
     companion object {
         private val DiffCallback = object : DiffUtil.ItemCallback<AirSchedule>() {
@@ -42,9 +42,9 @@ class AirlineAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AirlineViewHolder {
-        val viewHolder = AirlineViewHolder(
-            AirlineItemBinding.inflate(
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AirlineDetailsViewHolder {
+        val viewHolder = AirlineDetailsViewHolder(
+            AirlineDetailsItemBinding.inflate(
                 LayoutInflater.from( parent.context),
                 parent,
                 false
@@ -57,12 +57,12 @@ class AirlineAdapter(
         return viewHolder
     }
 
-    override fun onBindViewHolder(holder: AirlineViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AirlineDetailsViewHolder, position: Int) {
         holder.bind(getItem(position))
     }
 
-    class AirlineViewHolder(
-        private var binding: AirlineItemBinding
+    class AirlineDetailsViewHolder(
+        private var binding: AirlineDetailsItemBinding
     ): RecyclerView.ViewHolder(binding.root) {
         @SuppressLint("SimpleDateFormat")
         fun bind(airSchedule: AirSchedule) {
@@ -71,6 +71,7 @@ class AirlineAdapter(
                 "h:mm a").format(Date(airSchedule.arrivalTime.toLong() * 1000)
             )
             binding.terminalTextView.text = airSchedule.terminal
+            binding.statusTextView.text = airSchedule.status
         }
     }
 }

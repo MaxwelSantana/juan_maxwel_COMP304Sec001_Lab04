@@ -71,7 +71,7 @@ class AirlineScheduleFragment: Fragment() {
         super.onViewCreated(view, savedInstanceState)
         recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        val airlineAdapter = AirlineAdapter({})
+        val airlineAdapter = AirlineDetailsAdapter({})
         // by passing in the stop name, filtered results are returned,
         // and tapping rows won't trigger navigation
         recyclerView.adapter = airlineAdapter
